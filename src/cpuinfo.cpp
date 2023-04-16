@@ -3,7 +3,7 @@
 //
 
 #include "../inc/cpuinfo.h"
-
+#include <cstdlib>
 void CPUInfo::getInfo() {
     std::ifstream infile("/proc/cpuinfo");
     std::string line;
