@@ -14,10 +14,9 @@ public:
     int phyCpuNum;
     int coreNumber;
     std::string modelName[256];
-    int temp[256];
+    int temp;
     void getInfo();
     void printInfo();
-    void getCoreTemp(int coreNum);
     void getTemp();
 };
 

@@ -25,24 +25,24 @@ void CPUInfo::printInfo() {
     for(int core = 1;core<=this->coreNumber;core++)
         std::cout<<"CPU core number "<<std::setw(3)<<core<<" : "<<this->modelName[core]<<std::endl;
 }
-void CPUInfo::getCoreTemp(int coreNum) {
-    char filename[64];
-    std::sprintf(filename,"/sys/class/thermal/thermal_zone%d/temp",coreNum);
-    std::ifstream  file(filename);
-    if (file.is_open()) {
-        std::string line;
-        std::getline(file, line);
-        int temper = std::stoi(line) / 1000;
-        this->temp[coreNum] = temper;
-        std::cout << "CPU"<<std::setw(3)<<coreNum<<" temperature: " << temper << " C" << std::endl;
-        file.close();
-    } else {
-        std::cerr << "Failed to open file " << filename << std::endl;
-        exit(1);
-    }
-}
 void CPUInfo::getTemp() {
-    for(int core = 0;core<this->coreNumber;core++){
-        CPUInfo::getCoreTemp(core);
+    this->temp = 0;
+    std::string cmd = "sensors | grep Core";
+    FILE* pipe = popen(cmd.c_str(), "r");
+    if (!pipe) {
+        std::cerr << "popen() failed!" << std::endl;
     }
+    char buffer[128];
+    std::string line;
+
+    while(fgets(buffer, sizeof(buffer), pipe) != NULL) {
+        line.assign(buffer);
+        line = line.substr(line.find(":")+10);
+        line = line.erase(line.find('.'));
+        this->temp = std::max(this->temp, std::stoi(line));
+//        double temperature = std::stod(buffer);
+//        std::cout << "Temperature: " << temperature << std::endl;
+    }
+    pclose(pipe);
+    std::cout<<this->temp<<std::endl;
 }
