@@ -22,4 +22,4 @@ if you have some good idea,welcome to contact me.
 3. apt install docker.io
 4. cd FanSpeedControl
 5. docker build -t fanspeedcontrol .
-6. docker run --network host fanspeedcontrol
+6. docker run -d --network host fanspeedcontrol

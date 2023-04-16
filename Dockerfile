@@ -2,8 +2,7 @@ FROM ubuntu:latest
 LABEL authors="lsc"
 
 RUN apt-get update && \
-    apt-get install -y g++ make cmake gcc && \
-    rm -rf /var/lib/apt/lists/* \
+    apt-get install -y g++ make cmake gcc
 COPY . /app
 WORKDIR /app
 RUN mkdir build && cd build
