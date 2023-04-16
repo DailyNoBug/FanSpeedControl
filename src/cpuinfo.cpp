@@ -44,5 +44,5 @@ void CPUInfo::getTemp() {
 //        std::cout << "Temperature: " << temperature << std::endl;
     }
     pclose(pipe);
-    std::cout<<this->temp<<std::endl;
+//    std::cout<<this->temp<<std::endl;
 }

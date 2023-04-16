@@ -9,7 +9,7 @@ Fan x 3
 In this version, we have not introduced GPU.Although it has two pciex16 and three pciex4
 maybe in the future it is possible to control GPU fans independently.Also,this project just support x86 machine
 ## The principle of this project:
-1. get cpu info from linux api & get temp parameter from asm in C code.it could get every CPU core temp
+1. get cpu info from linux api.it could get every CPU core temp and cpu info.
 2. with the parameter of temp,decide how to control fan speed via ipmitool instruction
 3. it may be problem for this project that we could decide which model the server in ,such as boost,powerful or quiet
 
@@ -17,6 +17,9 @@ if your server is different from mine,there maybe some mistakes when you run thi
 bacause there maybe some difference between different mechine about ipmitool instruction
 if you have some good idea,welcome to contact me.
 ## how to install
-1. clone this project
+1. git clone https://github.com/DailyNoBug/FanSpeedControl.git
 2. apt update
-3. apt install lm-sensors
+3. apt install docker.io
+4. cd FanSpeedControl
+5. docker build -t FanSpeedControl .
+6. docker run --network host FanSpeedControl
