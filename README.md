@@ -21,5 +21,5 @@ if you have some good idea,welcome to contact me.
 2. apt update
 3. apt install docker.io
 4. cd FanSpeedControl
-5. docker build -t FanSpeedControl .
-6. docker run --network host FanSpeedControl
+5. docker build -t fanspeedcontrol .
+6. docker run --network host fanspeedcontrol
