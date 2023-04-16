@@ -11,6 +11,7 @@ int main() {
         cpu.getTemp();
         sfan.decision(cpu.temp);
         sleep(2);
+        printf("[INFO]  Temp: %d    Speed: %d\n",cpu.temp,sfan.speed);
     }
     return 0;
 }
