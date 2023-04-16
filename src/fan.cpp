@@ -5,19 +5,19 @@
 void Fan::decision(int temp) {
     if(temp<=10)err();
     char cmd[128];
-    int speed=0;
+    this->speed=0;
     double bi=0.0;
     if(temp<=35){
-        speed = 10;
+        this->speed = 10;
     }else if(temp>35 &&temp<=60){
         bi = (temp-35.0)*1.0/25.0;
-        speed = bi*15+10;
+        this->speed = bi*15+10;
     }else if(temp>60 && temp<=85){
-        speed = temp - 35;
+        this->speed = temp - 35;
     }else{
-        speed = (temp - 85)*2 + 50;
+        this->speed = (temp - 85)*2 + 50;
     }
-    Fan::excute(speed);
+    Fan::excute(this->speed);
 }
 void Fan::err() {
     exit(0);
