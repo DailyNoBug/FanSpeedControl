@@ -9,4 +9,4 @@ WORKDIR /app
 RUN cmake .
 RUN make .
 
-CMD ["./FanSpeedControl"]
+CMD ["bash ./setup.sh"]
