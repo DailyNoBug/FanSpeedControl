@@ -1,6 +1,10 @@
 #include <iostream>
+#include "inc/cpuinfo.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    CPUInfo cpu;
+    cpu.getInfo();
+    cpu.printInfo();
+    cpu.getTemp();
     return 0;
 }
