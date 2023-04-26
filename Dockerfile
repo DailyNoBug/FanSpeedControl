@@ -8,5 +8,3 @@ VOLUME /app
 WORKDIR /app
 RUN cmake .
 RUN make .
-
-CMD ["bash ./setup.sh"]
